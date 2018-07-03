@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(value = "aluno-service", configuration = FeignConfiguration.class)
+@FeignClient(value = "aluno-service", configuration = FeignConfiguration.class, fallback = AlunoClientFallback.class)
 public interface AlunoClient {
 
 	@RequestMapping(value = "/alunos", method = RequestMethod.GET)
