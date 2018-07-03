@@ -1,0 +1,3 @@
+[submodule "spring-cloud-config-repo"]
+	path = spring-cloud-config-repo
+	url = https://github.com/eduardomallmann/spring-cloud-config-repo
