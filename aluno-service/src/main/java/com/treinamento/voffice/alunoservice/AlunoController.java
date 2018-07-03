@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class AlunoController {
 
 	@Autowired
-	DisciplinaClient disciplinaClient;
+	DisciplinaServiceProxy disciplinaServiceProxy;
 
 	@Autowired
 	AlunoRepository alunoRepository;
@@ -44,8 +44,7 @@ public class AlunoController {
 
 		Aluno aluno = alunoRepository.findById(id).orElseThrow(() -> new RestClientException("Aluno id not found"));
 
-		List<String> disciplinas = disciplinaClient.getAllDisciplinas().getBody().stream().map(Disciplina::getNome)
-				.collect(Collectors.toList());
+		List<String> disciplinas = disciplinaServiceProxy.getNomesDisciplinas();
 
 		return ResponseEntity.ok(AlunoDTO.builder()
 				.nome(aluno.getNome())
